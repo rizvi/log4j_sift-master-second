@@ -1,0 +1,32 @@
+group 'com.waze'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+eclipse {
+    classpath {
+       downloadSources=true
+       downloadJavadoc=true
+    }
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    sources {
+        description = 'sources download'
+        transitive = true
+    }
+    copysource {
+        extendsFrom sources
+    }
+}
+
+dependencies {
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+}
